@@ -67,7 +67,7 @@ jobs:
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
             # Выполняет pull образа с DockerHub
-            sudo docker pull shogsy/infra_actions:latest
+            sudo docker pull ${{ secrets.SSH_USER }}/infra_actions
             #остановка всех контейнеров
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker run --rm -d -p 5000:5000 ${{ secrets.SSH_USER }}/infra_actions
